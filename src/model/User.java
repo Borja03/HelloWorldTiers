@@ -5,11 +5,12 @@ package model;
  * @author 2dam
  */
 public class User {
+    //User attributes
     private String dni;
     private String username;
     private String password;
     private String fullName;
-
+    //User attributes getters and setters
     public String getDni() {
         return dni;
     }
