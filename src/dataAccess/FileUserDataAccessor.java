@@ -1,21 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dataAccess;
 
 import java.util.ResourceBundle;
+import model.User;
 
 /**
  *
  * @author 2dam
  */
-public class FileUserDataAccessor {
-    //Get user info from properties file
-    //Getting dni
-    String static final USER_DNI = ResourceBundle.getBundle("dataAccess.userInfo").getString("user.dni");
-    //Getting username
-    //Getting password
-    //Getting fullName
+public class FileUserDataAccessor implements DataAccessible {
+
+    @Override
+    public User fetchData() {
+        String dni = ResourceBundle.getBundle("dataAccess.userInfo").getString("user.dni");
+        String username = ResourceBundle.getBundle("dataAccess.userInfo").getString("user.username");
+        String password = ResourceBundle.getBundle("dataAccess.userInfo").getString("user.password");
+        String fullName = ResourceBundle.getBundle("dataAccess.userInfo").getString("user.fullName");
+        
+        User user = new User(dni,username,password,fullName);
+        return user;
+    }
+
 }

@@ -10,12 +10,11 @@ use DBUser;
 Create table user (
     dni varchar (9) primary key,
     username varchar (20),
-    password varchar (20),
+    passwd varchar (20),
     fullName varchar (50)
-)
+);
 
-insert into user (dni,username,password,fullname) 
-values (20202020A,godofredo1,GodoFredo777,Gonzalo Alfredo Rodriguez)
+insert into user (dni,username,passwd,fullname) values ('20202020A','godofredo1','GodoFredo777','Gonzalo Alfredo Rodriguez');
 
 
 

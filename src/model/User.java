@@ -5,11 +5,20 @@ package model;
  * @author 2dam
  */
 public class User {
+
     //User attributes
     private String dni;
     private String username;
     private String password;
     private String fullName;
+
+    public User(String dni, String username, String password, String fullName) {
+        this.dni = dni;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+    }
+
     //User attributes getters and setters
     public String getDni() {
         return dni;
@@ -42,6 +51,5 @@ public class User {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    
-   
+
 }
