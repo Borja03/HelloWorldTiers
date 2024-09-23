@@ -16,7 +16,7 @@ import model.User;
 public class DBUserDataAccessor implements DataAccessible {
 
     // Parameters to access the DB
-    private String url = "jdbc:mysql://localhost:3306/DBUser?serverTimezone=Europe/Madrid";
+    private String url = "jdbc:mysql://localhost:3306/DBUser?serverTimezone=Europe/Madrid&useSSL=false";
     private String user = "root";
     private String passwd = "abcd*1234";
 
