@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dataAccess;
 
 import model.User;
 
 /**
- *
- * @author 2dam
+ * The DataAccessible interface defines a method for fetching user data.
+ * Implementing classes should provide the actual data retrieval logic.
+ * 
+ * @author Alder and Borja
  */
 public interface DataAccessible {
-    public User fetchData();
+    
+    /**
+     * Fetches user data.
+     * 
+     * @return A User object containing the user's information.
+     * @throws Exception If an error occurs while fetching user data.
+     */
+    public User fetchData() throws Exception;
 }

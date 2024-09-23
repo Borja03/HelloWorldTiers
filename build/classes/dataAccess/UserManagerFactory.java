@@ -1,38 +1,38 @@
 package dataAccess;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
-import model.User;
+import java.util.logging.Logger;
 
 /**
+ * The UserManagerFactory class is responsible for creating an instance of the
+ * DataAccessible interface according to the access type configured in a
+ * properties file.
  *
- * @author 2dam
+ * @author Alder and Borja
  */
 public class UserManagerFactory {
 
-    private String tipo;
-    private User user;
-
-    public UserManagerFactory() {
-        try {
-            tipo = ResourceBundle.getBundle("dataAccess.AccessorDataSelector", Locale.getDefault()).getString("dataAccessor");
-        } catch (Exception e) {
-            System.out.println("Error al cargar el ResourceBundle: " + e.getMessage());
-            //tipo = "DB";
+    private static String tipo = "";
+    /**
+     * Static method to create an instance of DataAccessible based on the
+     * configured type.
+     *
+     * @return An instance of a class that implements the DataAccessible
+     * interface. It can be an instance of DBUserDataAccessor or
+     * FileUserDataAccessor, depending on the configured type.
+     * @throws IllegalArgumentException If the access type is not supported.
+     */
+    public static DataAccessible createFactory() throws Exception{
+            tipo = ResourceBundle.getBundle("dataAccess.AccessorDataSelector").getString("dataAccessor");
+            
+        switch (tipo) {
+            case "DB":
+                return new DBUserDataAccessor();       
+            case "Properties file":
+                return new FileUserDataAccessor();
+            default:
+                Logger.getLogger("dataAccess").severe("Error creating data access instance");
         }
-    }
-
-    public User createFactory() {
-        if (tipo.equals("DB")) {
-            DBUserDataAccessor dataAccess = new DBUserDataAccessor();
-            user = dataAccess.fetchData();
-        } else if (tipo.equals("Properties file")) {
-            FileUserDataAccessor dataAccess = new FileUserDataAccessor();
-            user = dataAccess.fetchData();
-        } else {
-            System.out.println("Error! Debes seleccionar DB/Properties file en el archivo AccessorDataSelector");
-           user = null;
-        }
-        return user;
+        return null;
     }
 }

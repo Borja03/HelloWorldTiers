@@ -1,26 +1,24 @@
 package helloworldtiers;
 
+import dataAccess.DataAccessible;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import dataAccess.UserManagerFactory;
+import java.util.logging.Logger;
 import model.User;
 
 /**
+ * The UserDataWindowController class is the controller for a UI window that displays user data.
+ * It fetches data from the data access layer and assigns it to the appropriate UI labels.
  *
- * @author 2dam
+ * @author Alder and Borja
  */
 public class UserDataWindowController implements Initializable {
 
-    UserManagerFactory factory = new UserManagerFactory();
-    User user = null;
-
-    public void createFactory() {
-        user = factory.createFactory();
-    }
-
+    // View fields
     @FXML
     private Label label_dni;
     @FXML
@@ -29,21 +27,28 @@ public class UserDataWindowController implements Initializable {
     private Label label_password;
     @FXML
     private Label label_fullName;
-
+    
+    /**
+     * Initializes the controller class. Loads user data and sets it to the labels.
+     * If any error occurs during data retrieval, the labels are set to "Not available".
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if not known.
+     * @param rb The resource bundle to localize the root object, or null if not available.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Cargar los datos del usuario y asignarlos a los labels
-        this.createFactory();
-        if (user != null) {
+        try {
+            User user = UserManagerFactory.createFactory().fetchData();
             label_dni.setText("DNI: " + user.getDni());
             label_username.setText("Username: " + user.getUsername());
             label_password.setText("Password: " + user.getPassword());
             label_fullName.setText("Full name: " + user.getFullName());
-        } else {
+        } catch (Exception e) {
             label_dni.setText("DNI: Not available");
             label_username.setText("Username: Not available");
             label_password.setText("Password: Not available");
             label_fullName.setText("Full name: Not available");
+            Logger.getLogger("helloworldtiers").severe(e.getLocalizedMessage());
         }
     }
 }
