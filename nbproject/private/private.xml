@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/2dam/Desktop/HelloWorldTiers/src/dataAccess/UserManagerFactory.java</file>
-            <file>file:/C:/Users/2dam/Desktop/HelloWorldTiers/src/dataAccess/AccessorDataSelector.properties</file>
-            <file>file:/C:/Users/2dam/Desktop/HelloWorldTiers/src/dataAccess/DBUserDataAccessor.java</file>
-            <file>file:/C:/Users/2dam/Desktop/HelloWorldTiers/src/helloworldtiers/UserDataWindowController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
